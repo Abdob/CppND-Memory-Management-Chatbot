@@ -14,11 +14,6 @@
 
 ChatLogic::ChatLogic()
 {
-    // create instance of chatbot
-    _chatBot = new ChatBot("../images/chatbot.png");
-
-    // add pointer to chatlogic so that chatbot answers can be passed on to the GUI
-    _chatBot->SetChatLogicHandle(this);
 
 }
 
@@ -182,7 +177,7 @@ void ChatLogic::LoadAnswerGraphFromFile(std::string filename)
 
     // create create a local ChatBot instance on the stack
     ChatBot chatBot("../images/chatbot.png");
-
+    chatBot.SetChatLogicHandle(this);
     //use move semantics to pass the ChatBot instance into the root node
     chatBot.SetRootNode(rootNode);
     rootNode->MoveChatbotHere(std::move(chatBot));
